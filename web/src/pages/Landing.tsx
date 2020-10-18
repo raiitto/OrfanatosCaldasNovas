@@ -11,17 +11,22 @@ function Landing (){
     return (
         <div id="page-landing">
             <div className="content-warper">
-                <img src={logoImage} alt="Happy" />
+                <header>
+                    <img src={logoImage} alt="Happy" className={"image-logo"}/>
 
+                    <div className="location">
+                        <strong>Caldas Novas</strong>
+                        <span>Goiás</span>
+                    </div>
+                </header>
                 <main>
                     <h1>Leve felicidade para o mundo</h1>
                     <p>Visite orfanatos e mude o dia de muitas crianças</p>
                 </main>
 
-                <div className="location">
-                    <strong>Caldas Novas</strong>
-                    <span>Goiás</span>
-                </div>
+                <Link to="/dashboard" className="enter-dashboard">
+                    Acesso restrito
+                </Link>
 
                 <Link to="/app" className="enter-app">
                     <FiArrowRight size={26} color="rgba(0,0,0,0.6)"/>

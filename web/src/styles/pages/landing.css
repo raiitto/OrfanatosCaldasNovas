@@ -41,22 +41,47 @@
 
 }
 
+.content-warper .image-logo{
+    float: left;
+}
 
 .content-warper .location{
-    position: absolute;
-    right: 0;
-    top: 0;
-
+    margin-left: 64px;
     font-size: 24px;
     line-height: 34px;
     display: flex;
     flex-direction: column;
-    text-align: right;
-
+    text-align: left;
+    float: left;
 }
 
 .content-warper .location strong{
     font-weight: 800;
+}
+
+.content-warper .enter-dashboard{
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 222px;
+    height: 56px;
+    background: #12D4E0;
+    border-radius: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #FFF;
+    text-decoration: none;
+
+    transition: background-color 0.2s;
+}
+
+.content-warper .enter-dashboard:hover{
+    background: #96FEFF;
+    color: #15C3D6;
 }
 
 .content-warper .enter-app{

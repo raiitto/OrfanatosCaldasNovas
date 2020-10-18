@@ -1,0 +1,86 @@
+.login-component-content-warper{
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+}
+
+.login-component-content-warper .title {
+    color: #5C8599;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 34px;
+    margin-bottom: 40px;
+}
+.login-component-content-warper .input-description {
+    color: #8FA7B2;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+}
+
+.login-component-content-warper input{
+    width: 100%;
+    background: #F5F8FA;
+    border: 1px solid #D3E2E5;
+    border-radius: 20px;
+    outline: none;
+    color: #5C8599;
+    height: 64px;
+    margin-bottom: 20px;
+    padding-left: 24px;
+}
+.login-component-content-warper input.active{
+    border-color: #A1E9C5;
+}
+
+.login-component-content-warper .checkbox-line{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.login-component-content-warper .checkbox{
+    -moz-appearance:none;
+    -webkit-appearance:none;
+    width: 24px;
+    height: 24px;
+    background: #F5F8FA;
+    border: 1px solid #D3E2E5;
+    border-radius: 8px;
+    color: #5C8599;
+    float: left;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-component-content-warper .checkbox-checked{
+    background: #37C77F;
+}
+
+.login-component-content-warper div .input-description {
+    margin-left: 10px;
+    line-height: 24px;
+    float: left;
+}
+
+
+.login-component-content-warper div a.input-description {
+    text-decoration: none;
+}
+
+.login-component-content-warper .login-button{
+    width: 100%;
+    background: #A1E9C5;
+    border-radius: 20px;
+    border: none;
+    height: 64px;
+    margin-top: 40px;
+    pointer-events: none;
+    color: #FFF;
+}
+.login-component-content-warper .login-button.active{
+    background: #37C77F;
+    cursor: pointer;
+    pointer-events: auto;
+}
