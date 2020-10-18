@@ -1,17 +1,25 @@
 import React from "react";
 
 import '../../styles/pages/login.css';
-import {useAuth} from "../../contexts/auth";
+import Sidebar from "../../components/Sidebar";
+import Dashboard from "../../components/dashboard/Dashboard";
+import Pendentes from "../../components/dashboard/Pendentes";
+import {useDashboardContext} from "../../contexts/dashboard";
 
 
 export default function IndexDashboard() {
-    const { signOut} = useAuth();
-    function handleSignOut(){
-        signOut();
-    }
+
+    const { mainPage } = useDashboardContext();
     return (
         <div id="page-dashboard">
-            <button onClick={handleSignOut}>Sign Out</button >
+            <Sidebar dashBoardButtons/>
+            {
+                mainPage? (
+                    <Dashboard />)
+                :   (
+                    <Pendentes/>
+                    )
+            }
         </div>
     );
 }

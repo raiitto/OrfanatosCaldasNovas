@@ -1,0 +1,30 @@
+.dashboard-content-warper{
+    width: calc(100vw - 96px);
+    margin-left: 96px;
+    padding: 64px 112px 0 112px;
+}
+.content-scroll{
+    width: calc(100vw - 96px);
+    margin-left: 96px;
+    padding: 64px 82px 0 82px;
+
+    overflow-y: auto;
+    min-width: 545px;
+    max-width: 100%;
+
+    max-height: calc(100vh - 250px);
+}
+.dashboard-content-warper header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.dashboard-content-warper legend{
+    font-size: 32px;
+    color: #4D6F80;
+}
+
+.dashboard-content-warper hr{
+    opacity: 50%;
+    margin: 24px 0 10px 0;
+}

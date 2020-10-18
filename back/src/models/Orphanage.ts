@@ -24,6 +24,9 @@ export default class Orphanage{
     instructions: string;
 
     @Column()
+    telephone: string;
+
+    @Column()
     opening_hours: string;
 
     @Column()

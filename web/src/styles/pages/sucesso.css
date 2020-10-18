@@ -1,0 +1,50 @@
+#page-sucesso {
+    background: #37C77F;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-sucesso .content-warper{
+    background: url("../../images/sucesso-marker.svg") no-repeat 100% center;
+
+    width: 100%;
+    max-width: 914px;
+
+    height: 100%;
+    max-height: 490px;
+
+    display: flex;
+    align-items: center;
+}
+#page-sucesso .content-warper main{
+    height: 338px;
+    width: 392px;
+    font-size: 24px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    margin-left: 0;
+
+    text-align: center;
+}
+#page-sucesso .content-warper main legend{
+    font-size: 80px;
+    font-weight: 800;
+}
+#page-sucesso .content-warper main a{
+    width: 100%;
+    background: #31B272;
+    border-radius: 20px;
+    border: none;
+    margin-top: 40px;
+    color: #FFF;
+    height: 64px;
+    line-height: 64px;
+    text-decoration: none;
+}

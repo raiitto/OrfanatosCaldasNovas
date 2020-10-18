@@ -1,21 +1,11 @@
-interface Response {
+import api from "./api";
+
+export interface Response {
     token: string;
-    user: {
-        name: string;
-        email: string;
-    }
+    expiresIn: number;
 }
 
-export function signIn(): Promise<Response>{
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve({
-                token: 'sanbbasd549erfowifhjaspf',
-                user: {
-                    name: 'UsuarioNome',
-                    email: 'usuarioemail@email.com'
-                }
-            })
-        }, 2000);
-    })
+
+export function signIn(username: string, password: string): Promise<Response>{
+        return api.post('login', {username, password})
 }

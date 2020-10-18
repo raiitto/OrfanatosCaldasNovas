@@ -24,7 +24,7 @@ function Landing (){
                     <p>Visite orfanatos e mude o dia de muitas crianças</p>
                 </main>
 
-                <Link to="/dashboard" className="enter-dashboard">
+                <Link to="/dashboard/app" className="enter-dashboard">
                     Acesso restrito
                 </Link>
 

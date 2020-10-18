@@ -1,0 +1,33 @@
+#page-orphanage .confirm-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+#page-orphanage .confirm-buttons .confirm-button {
+    margin-top: 64px;
+
+    width: 45%;
+    height: 64px;
+    border: 0;
+    cursor: pointer;
+    border-radius: 20px;
+    color: #FFFFFF;
+    font-weight: 800;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background-color 0.2s;
+}
+
+#page-orphanage .confirm-buttons .confirm-button.left {
+    background: #FF669D;
+}
+
+
+#page-orphanage .confirm-buttons .confirm-button.right {
+    background: #3CDC8C;
+}
+

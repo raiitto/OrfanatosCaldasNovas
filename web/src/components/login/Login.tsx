@@ -10,7 +10,7 @@ export default function Login(){
     const [ pass, setPass] = useState('');
     const [ remember, setRemember ] = useState(false);
 
-    const { signIn} = useAuth();
+    const { signIn } = useAuth();
 
 
     async function handleSubmit(event: FormEvent){
@@ -19,7 +19,7 @@ export default function Login(){
         if (user.length<1||pass.length<1){
             return;
         }
-        await signIn();
+        await signIn(user,pass,remember);
     }
 
     return (

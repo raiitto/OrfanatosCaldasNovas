@@ -7,7 +7,7 @@ import '../../styles/pages/login.css';
 import logoVerticalImg from "../../images/logo-vertical.svg";
 import Login from "../../components/login/Login";
 
-export default function IndexLogin() {
+function IndexLogin() {
     const { goBack } = useHistory();
     return (
         <div id="page-login">
@@ -32,3 +32,4 @@ export default function IndexLogin() {
         </div>
     );
 }
+export default IndexLogin;

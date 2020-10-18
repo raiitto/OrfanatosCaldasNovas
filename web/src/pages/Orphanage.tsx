@@ -15,6 +15,7 @@ interface Orphanage{
   name: string;
   about: string;
   instructions: string;
+  telephone: string;
   opening_hours: string;
   open_on_weekends: string;
   images: Array<{
@@ -27,7 +28,7 @@ interface OrphanageParams{
   id: string;
 }
 
-export default function Orphanage() {
+function Orphanage() {
   const params  = useParams<OrphanageParams>();
   const [orphanage, setOrphanage] = useState<Orphanage>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
@@ -115,13 +116,15 @@ export default function Orphanage() {
                   </div>)}
             </div>
 
-            <button type="button" className="contact-button">
+            <a type="button" className="contact-button" href={`tel:${orphanage.telephone}`}>
               <FaWhatsapp size={20} color="#FFF" />
               Entrar em contato
-            </button>
+            </a>
           </div>
         </div>
       </main>
     </div>
   );
 }
+
+export default Orphanage;

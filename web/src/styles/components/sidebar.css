@@ -10,6 +10,42 @@ aside.app-sidebar {
     justify-content: space-between;
     align-items: center;
 }
+aside.app-sidebar .middle-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+aside.app-sidebar .middle-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 16px;
+    margin: 8px 0 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    cursor: pointer;
+}
+
+aside.app-sidebar .middle-button svg{
+    position: absolute;
+}
+aside.app-sidebar .middle-button img{
+    position: absolute;
+    width: 12px;
+    margin-left: 9px;
+    margin-top: -9px;
+}
+aside.app-sidebar .middle-button.active {
+    background: #FFD666;
+    pointer-events: none;
+}
+
+aside.app-sidebar .middle-button.inactive {
+    background: #12AFCB;
+}
 
 aside.app-sidebar img {
     width: 48px;

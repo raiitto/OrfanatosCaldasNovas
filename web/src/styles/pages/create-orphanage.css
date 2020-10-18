@@ -77,6 +77,10 @@ form.create-orphanage-form .input-block input {
   height: 64px;
   padding: 0 16px;
 }
+form.create-orphanage-form .input-block input.active,
+form.create-orphanage-form .input-block textarea.active  {
+  border-color: #A1E9C5;
+}
 
 form.create-orphanage-form .input-block textarea {
   min-height: 120px;
@@ -149,7 +153,7 @@ form.create-orphanage-form button.confirm-button {
   height: 64px;
   border: 0;
   cursor: pointer;
-  background: #3CDC8C;
+  background: #A1E9C5;
   border-radius: 20px;
   color: #FFFFFF;
   font-weight: 800;
@@ -157,8 +161,14 @@ form.create-orphanage-form button.confirm-button {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
 
   transition: background-color 0.2s;
+}
+form.create-orphanage-form button.confirm-button.active {
+  background: #37C77F;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 form.create-orphanage-form button.confirm-button svg {
@@ -166,5 +176,23 @@ form.create-orphanage-form button.confirm-button svg {
 }
 
 form.create-orphanage-form button.confirm-button:hover {
-  background: #36CF82;
+  background: #3EE08F;
+}
+
+form.create-orphanage-form div.bottom-map-description {
+  background: #F5F8FA;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 48px;
+
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  color: #0089A5;
+  text-align: center;
+  line-height: 48px;
+  font-size: 14px;
+  font-weight: 600;
 }

@@ -12,7 +12,7 @@ import {LeafletMouseEvent} from "leaflet";
 import api from "../services/api";
 
 
-export default function CreateOrphanage() {
+function CreateOrphanage() {
   const history = useHistory();
 
   const [position, setPosition] = useState({latitude: 0, longitude: 0});
@@ -20,6 +20,7 @@ export default function CreateOrphanage() {
   const [name, setName] = useState('');
   const [about, setAbout] = useState('');
   const [instructions, setInstructions] = useState('');
+  const [telephone, setTelephone] = useState('');
   const [opening_hours, setOpeningHours] = useState('');
   const [open_on_weekends, setOpenOnWeekends] = useState(true);
   const [images, setImages] = useState<File[]>([]);
@@ -45,12 +46,20 @@ export default function CreateOrphanage() {
     })
 
     setPreviewImages(selectedImagesPreview);
-    console.log(selectedImagesPreview);
   }
 
   async function handleSubmit(event: FormEvent){
     event.preventDefault();
 
+    if (name.length<1||
+        about.length<1||
+        instructions.length<1||
+        telephone.length<1||
+        opening_hours.length<1||
+        images.length<1||
+        position.latitude===0){
+      return;
+    }
     const { latitude, longitude } = position;
 
     const data = new FormData();
@@ -60,6 +69,7 @@ export default function CreateOrphanage() {
     data.append('latitude', String(latitude));
     data.append('longitude', String(longitude));
     data.append('instructions', instructions);
+    data.append('telephone', telephone);
     data.append('opening_hours', opening_hours);
     data.append('open_on_weekends', String(open_on_weekends));
 
@@ -67,11 +77,18 @@ export default function CreateOrphanage() {
       data.append('images', image);
     })
 
-    await api.post('orphanages', data);
+    api.post('orphanages', data).then(response =>{
+        history.push('/orphanages/sucesso');
+    }).catch(error => {
+        if(error.response.data.error){
+            alert(error.response.data.error)
+        }else{
+            alert(error.message);
+        }
+    });
 
-    alert('Cadastro realizado com sucesso');
+    //alert('Cadastro realizado com sucesso');
 
-    history.push('/app');
 
   }
   return (
@@ -90,6 +107,7 @@ export default function CreateOrphanage() {
               zoom={15}
               onClick={handleMapClick}
             >
+              <div className={"bottom-map-description"} >Clique no mapa para adicionar a localização</div>
               <TileLayer 
                 url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${"pk.eyJ1IjoicmFpaXR0byIsImEiOiJja2djbHFlbGQwMHd5MnBudzBjbW1zNWg1In0.YLzZoweNHAxE7Yn3ym5gtQ"}`}
               />
@@ -104,23 +122,36 @@ export default function CreateOrphanage() {
                       ]} />
                   )}
 
+
             </Map>
 
             <div className="input-block">
               <label htmlFor="name">Nome</label>
-              <input id="name"
-                     value={name}
-                     onChange={event => { setName(event.target.value)}}/>
+              <input
+                  className={name.length>0? "active": ''}
+                  id="name"
+                  value={name}
+                  onChange={event => { setName(event.target.value)}}/>
             </div>
 
             <div className="input-block">
               <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
-              <textarea id="sobre"
-                        maxLength={300}
-                        value={about}
-                        onChange={event => { setAbout(event.target.value)}}/>
+              <textarea
+                  className={about.length>0? "active": ''}
+                  id="sobre"
+                  maxLength={300}
+                  value={about}
+                  onChange={event => { setAbout(event.target.value)}}/>
             </div>
 
+            <div className="input-block">
+              <label htmlFor="telephone">Número de Whatsapp</label>
+              <input
+                  className={telephone.length>0? "active": ''}
+                  id="telephone"
+                  value={telephone}
+                  onChange={event => { setTelephone(event.target.value)}}/>
+            </div>
             <div className="input-block">
               <label htmlFor="images">Fotos</label>
 
@@ -146,21 +177,23 @@ export default function CreateOrphanage() {
             <div className="input-block">
               <label htmlFor="instructions">Instruções</label>
               <textarea
+                  className={instructions.length>0? "active": ''}
                   id="instructions"
                   value={instructions}
                   onChange={event => { setInstructions(event.target.value)}}/>
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Horário de funcionamento</label>
+              <label htmlFor="opening_hours">Horário das visitas</label>
               <input
+                  className={opening_hours.length>0? "active": ''}
                   id="opening_hours"
                   value={opening_hours}
                   onChange={event => { setOpeningHours(event.target.value)}}/>
             </div>
 
             <div className="input-block">
-              <label htmlFor="open_on_weekends">Atende fim de semana</label>
+              <label htmlFor="open_on_weekends">Atende fim de semana?</label>
 
               <div className="button-select">
                 <button
@@ -177,7 +210,17 @@ export default function CreateOrphanage() {
             </div>
           </fieldset>
 
-          <button className="confirm-button" type="submit">
+          <button
+              className={["confirm-button",
+                name.length>0&&
+                about.length>0 &&
+                telephone.length>0 &&
+                instructions.length>0 &&
+                opening_hours.length>0 &&
+                images.length>0 &&
+                position.latitude!==0
+                    ? 'active' : ''].join(" ")}
+              type="submit">
             Confirmar
           </button>
         </form>
@@ -185,5 +228,4 @@ export default function CreateOrphanage() {
     </div>
   );
 }
-
-// return `https://a.tile.openstreetmap.org/${z}/${x}/${y}.png`;
+export default CreateOrphanage;
